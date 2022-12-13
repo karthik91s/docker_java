@@ -1,6 +1,4 @@
-FROM maven:3.8-jdk-11
-RUN mkdir /project
-COPY . /project
-WORKDIR /project
-RUN mvn clean package -DskipTests
-CMD ["java", "-jar", "target/demo-0.0.1-SNAPSHOT.jar"]
+FROM openjdk:11-alpine3.14
+WORKDIR /application
+COPY build/libs/awesome-app-1.0.jar ./
+CMD ["java", "-jar", "awesome-app-1.0.jar"]
